@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int subarrayBitwiseORs(vector<int>& arr) {
+        unordered_set<int> all;
+        unordered_set<int> prev;
+
+        for (int x : arr) {
+            unordered_set<int> curr;
+
+            // Subarray containing only x
+            curr.insert(x);
+
+            // Extend all previous subarrays by x
+            for (int val : prev) {
+                curr.insert(val | x);
+            }
+
+            // Add current results to the global set
+            for (int val : curr) {
+                all.insert(val);
+            }
+
+            // Current subarrays become previous for next iteration
+            prev = curr;
+        }
+
+        return all.size();
+    }
+};
