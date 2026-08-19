@@ -1,0 +1,15 @@
+public class Solution {
+    public String toHex(int num) {
+        if (num == 0) return "0";
+        
+        String map = "0123456789abcdef";
+        String result = "";
+        
+        while (num != 0) {
+            result = map.charAt(num & 15) + result;
+            num >>>= 4;
+        }
+        
+        return result;
+    }
+}
