@@ -1,0 +1,16 @@
+class Solution:
+    def is_self_dividing(self, n):
+        temp = n
+        while temp > 0:
+            digit = temp % 10
+            if digit == 0 or n % digit != 0:
+                return False
+            temp //= 10
+        return True
+
+    def selfDividingNumbers(self, left,right): 
+        results = []
+        for num in range(left, right + 1):
+            if self.is_self_dividing(num):
+                results.append(num)
+        return results
